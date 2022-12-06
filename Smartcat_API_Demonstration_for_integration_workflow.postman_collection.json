@@ -1,0 +1,656 @@
+{
+	"info": {
+		"_postman_id": "1a7b65a4-52e9-424a-8711-7977610d05ec",
+		"name": "Smartcat API Demonstration for integration workflow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22762244"
+	},
+	"item": [
+		{
+			"name": "Regular document workflows",
+			"item": [
+				{
+					"name": "Create project",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "body",
+									"value": "{\n  \"name\": \"Demo Project from Postman\",\n  \"description\": \"This project was created via API request from Postman\",\n  \"sourceLanguage\": \"en\",\n  \"targetLanguages\": [\"zh-Hans\"],\n  \"assignToVendor\": false,\n  \"pretranslate\": true,\n  \"autoPropagateRepetitions\": false,\n  \"workflowStages\": [\"Translation\", \"Editing\"]\n}\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/project/create",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"project",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get project statistics",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v2/project/{projectID}/statistics",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v2",
+								"project",
+								"{projectID}",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add document",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/project/document?projectId={projectID}",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"project",
+								"document"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "{projectID}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update document",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/document/update?documentId={documentId}",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"document",
+								"update"
+							],
+							"query": [
+								{
+									"key": "documentId",
+									"value": "{documentId}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request resulting document to export",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/document/export?documentIds=documentIds&mode=Complete&type=Target&stageNumber=1",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"document",
+								"export"
+							],
+							"query": [
+								{
+									"key": "documentIds",
+									"value": "documentIds"
+								},
+								{
+									"key": "mode",
+									"value": "Complete"
+								},
+								{
+									"key": "type",
+									"value": "Target"
+								},
+								{
+									"key": "stageNumber",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download resulting document",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/document/export/{exportTaskID}",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"document",
+								"export",
+								"{exportTaskID}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add document with folders (Raw request example)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data; boundary=--------------------SmartCATe8bf0f27d7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "----------------------SmartCATe8bf0f27d7\r\nContent-Disposition: form-data; name=\"documentModel\"\r\nContent-Type: application/json\r\n\r\n[\r\n    {\r\n        \"bilingualFileImportSetings\": {},\r\n        \"targetLanguages\": [\r\n            \"zh-Hans\"\r\n        ],\r\n        \"enablePlaceholders\": true\r\n    }\r\n]\r\n----------------------SmartCATe8bf0f27d7\r\nContent-Disposition: form-data; name=\"txt\"; filename=\"a/b/new_txt.txt\"\r\nContent-Type: application/octetstream\r\n\r\nText\r\n----------------------SmartCATe8bf0f27d7--"
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/project/document?projectId={projectID}",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"project",
+								"document"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "{projectID}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Software localization project workflows",
+			"item": [
+				{
+					"name": "Import keys",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "value",
+									"value": "{\"filesLanguage\": \"en\", \"labels\": []}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"contentType": "text/plain",
+									"type": "file",
+									"src": "/C:/API/Integration/with_plural_hints.locjson"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/project/{projectID}/import?keyConflictResolution=1",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"project",
+								"{projectID}",
+								"import"
+							],
+							"query": [
+								{
+									"key": "keyConflictResolution",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import keys (merge changes)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "value",
+									"value": "{\"filesLanguage\": \"en\", \"labels\": []}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"contentType": "text/plain",
+									"type": "file",
+									"src": "/C:/API/Integration/with_plural_hints.locjson"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/project/{projectID}/import?keyConflictResolution=1",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"project",
+								"{projectID}",
+								"import"
+							],
+							"query": [
+								{
+									"key": "keyConflictResolution",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export keys",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Extract Export Task ID\", function () {",
+									"    var jsonData = pm.response.text();",
+									"    pm.collectionVariables.set(\"exportTaskID\", jsonData.replaceAll(\"\\\"\", \"\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"format\": \"json\",\n    \"languages\": [\"zh-Hans\"],\n    \"segmentExportMode\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/project/{projectID}/export",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"project",
+								"{projectID}",
+								"export"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download export results",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "API_Token",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Account_ID",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://smartcat.ai/api/integration/v1/document/export/{exportTaskID}",
+							"protocol": "https",
+							"host": [
+								"smartcat",
+								"ai"
+							],
+							"path": [
+								"api",
+								"integration",
+								"v1",
+								"document",
+								"export",
+								"{exportTaskID}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "accountID",
+			"value": "8b20e79a-6672-436e-95f5-caba8480b2a2",
+			"type": "string"
+		},
+		{
+			"key": "apiToken",
+			"value": "6_dBWsD9KnSO9ZilQqjP9mRMnk3",
+			"type": "string"
+		},
+		{
+			"key": "apiServer",
+			"value": "ea.smartcat.com",
+			"type": "string"
+		},
+		{
+			"key": "projectID",
+			"value": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+			"type": "string"
+		},
+		{
+			"key": "exportTaskID",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
